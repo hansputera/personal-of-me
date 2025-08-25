@@ -43,7 +43,7 @@ export const imagesToPdf = async (urls: string[]) => {
 	pdfDoc.setAuthor('xbato.com');
 	pdfDoc.setCreationDate(new Date());
 	pdfDoc.setModificationDate(new Date());
-	
+
 	const file = await pdfDoc.save();
 	await writeFile(`./files/${Buffer.from(hashOfUrls).toString('hex')}.pdf`, file);
 

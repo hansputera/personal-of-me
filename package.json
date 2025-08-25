@@ -1,6 +1,6 @@
 {
   "name": "personal-of-me",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "My whatsapp bot",
   "main": "./dist/index.js",
   "scripts": {
@@ -21,6 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@hapi/boom": "^10.0.1",
     "@swc/core": "^1.13.5",
     "@types/node": "^20.19.11",
     "@types/qrcode": "^1.5.5",
@@ -34,12 +35,11 @@
   "dependencies": {
     "@aws-crypto/sha256-js": "^5.2.0",
     "baileys": "^6.7.18",
-    "find-chrome-bin": "^2.0.3",
     "got": "^14.4.7",
+    "link-preview-js": "^3.1.0",
     "pdf-lib": "^1.17.1",
     "pretty-ms": "^9.2.0",
     "qrcode": "^1.5.4",
-    "sharp": "^0.34.3",
-    "whatsapp-web.js": "^1.32.0"
+    "sharp": "^0.34.3"
   }
 }
