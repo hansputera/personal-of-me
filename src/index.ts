@@ -8,7 +8,7 @@ import {
 	XBATO_CHAPTER_REGEX,
 	XBATO_REGEX,
 } from './regexes.js';
-import { fetchTiktokVideo } from './services/tiktok.js';
+import { fetchTiktokVideo, getTikTokURL } from './services/tiktok.js';
 import got from 'got';
 import prettyMilliseconds from 'pretty-ms';
 import { fetchBato, fetchBatoImages, searchBato } from './services/xbato.js';
@@ -74,11 +74,11 @@ async function runWaBot() {
 		let text =
 			msg?.message?.conversation?.trim() ?? msg?.message?.extendedTextMessage?.text?.trim();
 		const isBypass = quotedMsg && text === '--bypass';
-		const fromMe = (msg?.key.participant
+		const fromMe = msg?.key.participant
 			? msg.key.participant.replace(NORMALIZED_ID_REGEX, '') ===
 				socket.user?.lid?.replace(NORMALIZED_ID_REGEX, '')
 			: msg?.key.remoteJid?.replace(NORMALIZED_ID_REGEX, '') ===
-				socket.user?.id.replace(NORMALIZED_ID_REGEX, ''));
+				socket.user?.id.replace(NORMALIZED_ID_REGEX, '');
 
 		if (msg && (fromMe || msg.key.fromMe) && !text?.startsWith('[BOT]')) {
 			if (isBypass) {
@@ -90,7 +90,7 @@ async function runWaBot() {
 			}
 
 			// Tiktok feature
-			const tiktokUrl = VT_TIKTOK_REGEX.exec(text)?.at(0);
+			const tiktokUrl = getTikTokURL(text);
 			if (tiktokUrl) {
 				const tiktokCdnUrls = await fetchTiktokVideo(tiktokUrl);
 				if (tiktokCdnUrls.length) {
