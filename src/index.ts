@@ -36,6 +36,14 @@ async function runWaBot() {
 					throw err;
 				}
 			});
+
+			qrcode.toString(conn.qr, (err, qr) => {
+				if (err) {
+					throw err;
+				}
+
+				console.log(qr);
+			});
 		}
 
 		if (conn.connection === 'close') {
