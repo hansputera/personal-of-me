@@ -27,6 +27,7 @@ async function runWaBot() {
 	const socket = makeWASocket({
 		auth: auth.state,
 		browser: Browsers.macOS('Chrome'),
+		syncFullHistory: true,
 	});
 
 	socket.ev.on('connection.update', (conn) => {
