@@ -3,3 +3,4 @@ onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
   - puppeteer
+  - sharp

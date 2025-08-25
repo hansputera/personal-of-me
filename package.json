@@ -32,10 +32,13 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@aws-crypto/sha256-js": "^5.2.0",
     "find-chrome-bin": "^2.0.3",
     "got": "^14.4.7",
+    "pdf-lib": "^1.17.1",
     "pretty-ms": "^9.2.0",
     "qrcode": "^1.5.4",
+    "sharp": "^0.34.3",
     "whatsapp-web.js": "^1.32.0"
   }
 }
