@@ -32,6 +32,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "find-chrome-bin": "^2.0.3",
     "got": "^14.4.7",
     "pretty-ms": "^9.2.0",
     "qrcode": "^1.5.4",

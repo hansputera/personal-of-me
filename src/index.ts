@@ -4,13 +4,15 @@ import { rm, stat } from 'node:fs/promises';
 import prettyMs from 'pretty-ms';
 import { VT_TIKTOK_REGEX } from './regexes.js';
 import { fetchTiktokVideo } from './services/tiktok.js';
+import { findChrome } from 'find-chrome-bin';
 
+const chromeInfo = await findChrome({});
 const client = new WAWeb.Client({
 	authStrategy: new WAWeb.LocalAuth({
 		dataPath: 'wa_session',
 	}),
 	puppeteer: {
-		executablePath: '/usr/bin/google-chrome-stable',
+		executablePath: chromeInfo.executablePath,
 		args: ['--no-sandbox'],
 		headless: true,
 	},
