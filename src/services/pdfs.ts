@@ -27,6 +27,11 @@ export const imagesToPdf = async (urls: string[]) => {
 				connect: 15_000,
 				read: 30_000,
 				request: 30_000,
+				response: 30_000,
+				send: 30_000,
+				socket: 30_000,
+				secureConnect: 30_000,
+				lookup: 30_000,
 			},
 		}).buffer();
 		imageBuffer = await sharp(imageBuffer).png().toBuffer();
