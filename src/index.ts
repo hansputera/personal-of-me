@@ -74,15 +74,13 @@ async function runWaBot() {
 		let text =
 			msg?.message?.conversation?.trim() ?? msg?.message?.extendedTextMessage?.text?.trim();
 		const isBypass = quotedMsg && text === '--bypass';
-		const fromMe = msg?.key.participant
+		const fromMe = (msg?.key.participant
 			? msg.key.participant.replace(NORMALIZED_ID_REGEX, '') ===
 				socket.user?.lid?.replace(NORMALIZED_ID_REGEX, '')
 			: msg?.key.remoteJid?.replace(NORMALIZED_ID_REGEX, '') ===
-				socket.user?.id.replace(NORMALIZED_ID_REGEX, '');
+				socket.user?.id.replace(NORMALIZED_ID_REGEX, ''));
 
-		console.log(fromMe, msg?.key.participant?.replace(NORMALIZED_ID_REGEX, ''), socket.user?.lid?.replace(NORMALIZED_ID_REGEX, ''), msg?.key.remoteJid?.replace(NORMALIZED_ID_REGEX, ''), socket.user?.id.replace(NORMALIZED_ID_REGEX, ''));
-
-		if (msg && fromMe && !text?.startsWith('[BOT]')) {
+		if (msg && (fromMe || msg.key.fromMe) && !text?.startsWith('[BOT]')) {
 			if (isBypass) {
 				text = quotedMsg.conversation ?? '';
 			}
