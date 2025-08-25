@@ -22,7 +22,13 @@ export const imagesToPdf = async (urls: string[]) => {
 	for (const url of urls) {
 		console.log(`[imagesToPdf]: Downloading image from ${url}`);
 
-		let imageBuffer = await got(url).buffer();
+		let imageBuffer = await got(url, {
+			timeout: {
+				connect: 15_000,
+				read: 30_000,
+				request: 30_000,
+			},
+		}).buffer();
 		imageBuffer = await sharp(imageBuffer).png().toBuffer();
 
 		console.log(`[imagesToPdf]: Adding image from ${url} to PDF`);
