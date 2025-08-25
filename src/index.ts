@@ -35,6 +35,11 @@ client.on('ready', async () => {
 
 client.on('message_create', async (message) => {
 	if (message.fromMe) {
+        if (message.body === '--bypass' && message.hasQuotedMsg) {
+            const quotedMessage = await message.getQuotedMessage();
+            message.body = quotedMessage.body;
+        }
+
 		const tiktokUrl = VT_TIKTOK_REGEX.exec(message.body)?.at(0);
 		if (tiktokUrl) {
 			const tiktokCdnUrls = await fetchTiktokVideo(tiktokUrl).catch(() => []);
