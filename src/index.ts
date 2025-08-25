@@ -11,6 +11,8 @@ const client = new WAWeb.Client({
 	}),
 	puppeteer: {
 		executablePath: '/usr/bin/google-chrome-stable',
+		args: ['--no-sandbox'],
+		headless: true,
 	},
 });
 
