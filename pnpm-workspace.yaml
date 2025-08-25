@@ -1,6 +1,8 @@
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@swc/core'
+  - baileys
   - esbuild
+  - protobufjs
   - puppeteer
   - sharp
