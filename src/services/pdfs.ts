@@ -33,6 +33,10 @@ export const imagesToPdf = async (urls: string[]) => {
 				secureConnect: 30_000,
 				lookup: 30_000,
 			},
+			retry: {
+				limit: 5,
+				statusCodes: [521, 500],
+			},
 		}).buffer();
 		imageBuffer = await sharp(imageBuffer).png().toBuffer();
 

@@ -10,8 +10,8 @@ export const fetchTiktokVideo = async (url: string, retry = 0): Promise<string[]
 				url,
 			}),
 			retry: {
-				limit: 3,
-				statusCodes: [500],
+				limit: 5,
+				statusCodes: [500, 521],
 			},
 		})
 		.json<{
