@@ -1,10 +1,9 @@
 import { Browsers, DisconnectReason, makeWASocket, useMultiFileAuthState } from 'baileys';
-import { readFile, rm } from 'node:fs/promises';
+import { rm } from 'node:fs/promises';
 import qrcode from 'qrcode';
 import type { Boom } from '@hapi/boom';
 import {
 	NORMALIZED_ID_REGEX,
-	VT_TIKTOK_REGEX,
 	XBATO_CHAPTER_REGEX,
 	XBATO_REGEX,
 } from './regexes.js';
